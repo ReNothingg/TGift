@@ -1,11 +1,9 @@
 import { useMemo, useState } from 'react'
-import { backdropInfoUrl, giftJsonUrl, modelJsonUrl, originalJsonUrl, symbolJsonUrl } from '../api/changesApi'
 import { fallbackBackdrop } from '../constants'
 import type { AssetPanel, BackdropInfo, CopyState, GiftDetail, Tab, TraitSort } from '../types'
 import { backdropToInfo } from '../utils/backdrops'
 import { sortTraits } from '../utils/format'
 import { AssetGallery } from './AssetGallery'
-import { EndpointRow } from './EndpointRow'
 import { Icon } from './Icon'
 import { RarityMeter } from './RarityMeter'
 
@@ -25,7 +23,6 @@ export function Inspector({
   onRandomize,
   onOpenActive,
   onCopyActive,
-  onCopyEndpoint,
 }: {
   detail: GiftDetail | null
   tab: Tab
@@ -60,7 +57,6 @@ export function Inspector({
     <aside className="inspector-panel" aria-label="Настройки NFT">
       <div className="panel-header">
         <div>
-          <p className="panel-kicker">Настройка</p>
           <h2>{tab === 'nft' ? 'NFT-вариант' : 'Обычный подарок'}</h2>
         </div>
         <button
@@ -140,23 +136,6 @@ export function Inspector({
           {activeCopyLabel}
         </button>
       </div>
-
-      {detail ? (
-        <section className="endpoint-panel" aria-label="API эндпоинты">
-          <h3>JSON эндпоинты</h3>
-          <EndpointRow label="Подарок JSON" value={giftJsonUrl(giftName)} onCopy={onCopyEndpoint} />
-          <EndpointRow label="Оригинал JSON" value={originalJsonUrl(giftName)} onCopy={onCopyEndpoint} />
-          {selectedModel ? (
-            <EndpointRow label="Модель JSON" value={modelJsonUrl(giftName, selectedModel.name)} onCopy={onCopyEndpoint} />
-          ) : null}
-          {selectedSymbol ? (
-            <EndpointRow label="Символ JSON" value={symbolJsonUrl(giftName, selectedSymbol.name)} onCopy={onCopyEndpoint} />
-          ) : null}
-          {selectedBackdrop ? (
-            <EndpointRow label="Фон JSON" value={backdropInfoUrl(giftName, selectedBackdrop.name)} onCopy={onCopyEndpoint} />
-          ) : null}
-        </section>
-      ) : null}
     </aside>
   )
 }

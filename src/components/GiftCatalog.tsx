@@ -44,7 +44,6 @@ export function GiftCatalog({
     <aside className="catalog-panel" aria-label="Каталог подарков">
       <div className="panel-header">
         <div>
-          <p className="panel-kicker">Каталог</p>
           <h2>Подарки Telegram</h2>
         </div>
         <span className="count-pill">{filteredGifts.length}</span>

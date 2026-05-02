@@ -16,7 +16,7 @@ import { LayerStrip } from './components/LayerStrip'
 import { PreviewStage } from './components/PreviewStage'
 import { SegmentedTabs } from './components/SegmentedTabs'
 import { StatTile } from './components/StatTile'
-import { API_BASE, INITIAL_GIFT } from './constants'
+import { INITIAL_GIFT } from './constants'
 import type { BackdropInfo, CopyState, GiftDetail, Tab, Totals, TraitSort } from './types'
 import { backdropToInfo, mergeBackdropInfo } from './utils/backdrops'
 import { getRandomItem } from './utils/format'
@@ -239,10 +239,6 @@ function App() {
           <StatTile label="Фоны" value={totals?.backdrops} />
           <StatTile label="Символы" value={totals?.patterns} />
         </div>
-
-        <a className="docs-link" href={API_BASE} target="_blank" rel="noreferrer">
-          Документация API
-        </a>
       </header>
 
       {error ? (
@@ -313,7 +309,6 @@ function App() {
               <Icon name="gift" />
               <div>
                 <strong>Обычный подарок Telegram</strong>
-                <span>Предпросмотр тоже идет из Lottie JSON: `/original/:gift.json`.</span>
               </div>
             </div>
           )}
