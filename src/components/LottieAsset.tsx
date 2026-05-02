@@ -36,7 +36,7 @@ export function LottieAsset({
 
     async function loadAnimation() {
       try {
-        const { default: lottiePlayer } = await import('lottie-web')
+        const { default: lottiePlayer } = await import('lottie-web/build/player/lottie_light')
 
         if (cancelled) return
 
